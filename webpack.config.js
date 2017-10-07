@@ -11,13 +11,13 @@ module.exports = {
         loaders: [
             {
                 test: /\.js$/,
-                loader: 'babel',
+                loader: 'babel-loader',
                 include: path.join(__dirname, 'src'),
             },
         ],
     },
     output: {
-        path: './dist',
+        path: path.join(__dirname, 'dist'),
         filename: '[name].js',
     },
 };

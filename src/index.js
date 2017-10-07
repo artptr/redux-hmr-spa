@@ -1,17 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import { createStore } from 'redux';
-import { browserHistory } from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
+import { createStore, compose, applyMiddleware } from 'redux';
+import { createBrowserHistory } from 'history';
+import { routerMiddleware } from 'react-router-redux';
 
 import reducers from './reducers';
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const history = createBrowserHistory();
+
 const store = createStore(
     reducers,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    composeEnhancers(
+        applyMiddleware(
+            routerMiddleware(history)
+        )
+    )
 );
-const history = syncHistoryWithStore(browserHistory, store);
 
 const target = document.getElementById('app');
 
