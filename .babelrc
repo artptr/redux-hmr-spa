@@ -2,10 +2,11 @@
   "presets": [
     "react",
     "stage-0",
-    "env"
+    ["env", {
+      "modules": false
+    }]
   ],
   "plugins": [
-    "react-hot-loader/babel",
     "transform-decorators-legacy"
   ]
 }
