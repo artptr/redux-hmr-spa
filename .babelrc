@@ -1,8 +1,8 @@
 {
   "presets": [
     "react",
-    "stage-2",
-    "latest"
+    "stage-0",
+    "env"
   ],
   "plugins": [
     "react-hot-loader/babel",
